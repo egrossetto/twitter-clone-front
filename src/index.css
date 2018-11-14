@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* TWEET.JS */
+
+.tweet{
+  background-color: white;
+  align-items: center;
+  overflow: hidden;
+  padding: 8px 4px;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.tweet-container{
+  width: 100%;
+}
+
+.tweet-container h4{
+  margin: 0px;
+}
+
+.tweet-container p{
+  word-break: break-all;
+  margin: 8px 0px;
+}
+
+.tweet-footer{
+  float: none;
+  clear: both;
+  width: 100%;
+}
+
+/*  FEED.JS   */
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+  text-align: center;
+  border-left: 1px solid
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* LOGIN.JS */
+
+.login-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
