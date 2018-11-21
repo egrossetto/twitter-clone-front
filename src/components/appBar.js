@@ -38,9 +38,6 @@ const styles = {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button variant="fab" mini color="primary" aria-label="Add" className={classes.menuButton}>
-                <AddIcon />
-            </Button>
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Twitter-Clone 
             </Typography>

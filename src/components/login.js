@@ -1,7 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link, Route } from 'react-router-dom';
 import { withAlert } from "react-alert";
+import signUp from './signUp';
 
 class loginForm extends React.Component {
     constructor(props) {
@@ -58,7 +60,11 @@ class loginForm extends React.Component {
                 <input onChange={e => this.handleChange(e)} placeholder="Password"  type="password" name="password" />
                 <Button onClick={() => this.handleSubmit()}>LOGIN</Button>
                 <br />
-                <Link to='/signup'>SIGN UP</Link>
+                <Button><Link to='/signup'>SIGN UP</Link></Button>
+
+                <Route path='/signup' component={signUp}></Route>
+
+                
             </div>
       )
     }

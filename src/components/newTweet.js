@@ -8,10 +8,13 @@ class newTweet extends Component {
         super(props);
         this.state = {
           description: '',
-          owner: {}
+          owner: {
+            name: "",
+            lastName: "",
+            userName: ""
+          }
         };
     }
-
 
     handleChange(event) {
         this.setState({
@@ -25,17 +28,20 @@ class newTweet extends Component {
 
       debugger;
 
-      fetch('http://localhost:3000/api/v1/tweets', {
-        method: 'POST',
-        body: JSON.stringify({
-          description: this.state.description,
-          owner: this.state.owner
-        }),
-        headers: {
-          'token': token
-        }
-      })
+      if(this.state.description !== ""){
+        fetch('http://localhost:3000/api/v1/tweets', {
+          method: 'POST',
+          body: JSON.stringify(this.state),
+          headers: {
+            'Content-Type': 'application/json',
+            'token': token
+          }
+        })
         .then(result => result.json())
+        .then(
+            this.setState({ description: '' })
+          )
+      }
     }
 
     componentDidMount() {
@@ -44,7 +50,9 @@ class newTweet extends Component {
       owner.lastName = sessionStorage.getItem('lastName');
       owner.userName = sessionStorage.getItem('userName');
 
-      this.setState({ owner: owner });
+      this.setState({
+        owner: owner
+      })
     }
 
   render() {

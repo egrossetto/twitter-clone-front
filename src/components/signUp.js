@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button } from '@material-ui/core';
 import { withAlert } from "react-alert";
 
-export default class signUp extends Component {
+class signUp extends Component {
   
     constructor(props){
         super(props);
@@ -29,13 +29,14 @@ export default class signUp extends Component {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8"
                 }
+                })
                 .then(result => result.json())
                 .then(result => {
                     fetch('http://localhost:3000/api/v1/login', {
                         method: 'POST',
                         body: JSON.stringify({
-                            userName: result.userName,
-                            password: result.password
+                            userName: this.state.userName,
+                            password: this.state.password
                         }),
                         headers: {
                             "Content-Type": "application/json; charset=utf-8"
@@ -45,9 +46,12 @@ export default class signUp extends Component {
                     .then( result => {
                         console.log(result);
                         sessionStorage.setItem('token', result.token);
+                        sessionStorage.setItem('name', result.name);
+                        sessionStorage.setItem('lastName', result.lastName);
+                        sessionStorage.setItem('userName', result.userName);
+                        sessionStorage.setItem('mail', result.mail);
                         window.location.href = "/";
                     });
-                })
                 })
         }else{
             this.props.alert.show("Por favor ingrese todos los campos.");
@@ -64,8 +68,10 @@ export default class signUp extends Component {
                 <input onChange={e => this.handleChange(e)} placeholder="Username" type="text" name="userName" ></input>
                 <input onChange={e => this.handleChange(e)} placeholder="E-Mail" type="text" name="mail" ></input>
                 <input onChange={e => this.handleChange(e)} placeholder="Password" type="password" name="password" ></input>
-                <Button onClick={() => this.handleSubmit()}></Button>
+                <Button onClick={() => this.handleSubmit()}>SIGN UP</Button>
             </div>
     )
   }
 }
+
+export default withAlert(signUp)

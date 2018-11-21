@@ -34,7 +34,7 @@ class Feed extends Component {
         let tweets = this.state.tweets.map(tweet => {
             return <Tweet userName={tweet.owner.userName} description={tweet.description} />
         })
-
+        
         return(
             <div className="row">
                 <div className="column left">
